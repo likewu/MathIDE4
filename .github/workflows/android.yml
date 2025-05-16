@@ -54,6 +54,12 @@ jobs:
           name: FOSS App (Non-Minified)
           path: ./app/build/outputs/apk/foss/nonMinifiedRelease/app-foss-nonMinifiedRelease.apk
 
+      - name: Upload Debug APK (Baidu)
+        uses: actions/upload-artifact@v4
+        with:
+          name: Baidu App (Debug)
+          path: ./app/build/outputs/apk/baidu/debug/app-baidu-debug.apk
+
       - name: Delete Keystore
         run: rm app/keystore.jks
 

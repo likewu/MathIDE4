@@ -33,6 +33,7 @@
     <string name="action_replace">替换</string>
     <string name="action_goto_line">转到行</string>
     <string name="action_go_to">转到</string>
+    <string name="action_coderun">运行</string>
     <string name="action_force_syntax">强制语法</string>
     <string name="action_insert_color">插入颜色</string>
     <string name="action_settings">设置</string>
@@ -51,4 +52,8 @@
     <string name="message_nothing_to_copy">没有任何内容可复制</string>
     <string name="message_nothing_to_paste">没有任何内容可粘贴</string>
     <string name="message_line_not_exists">行号不存在</string>
+
+    <string name="dialog_title_result">结果</string>
+    <string name="message_runing">正在MathLand中运行</string>
+    <string name="action_ok">确认</string>
 </resources>

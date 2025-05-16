@@ -30,4 +30,8 @@ internal sealed class EditorViewEvent : ViewEvent {
     data class Command(
         val command: EditorCommand
     ) : EditorViewEvent()
+    data class CodeRunContract(
+        val language: String,
+        val path: String
+    ) : EditorViewEvent()
 }

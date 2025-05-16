@@ -15,6 +15,8 @@ import kotlinx.kover.gradle.plugin.dsl.KoverProjectExtension
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import java.text.SimpleDateFormat;
+import java.util.concurrent.TimeUnit;
 
 plugins {
     alias(libs.plugins.android.application) apply false
@@ -141,3 +143,49 @@ fun KoverProjectExtension.applyRules() {
         }
     }
 }
+
+// Log timings per task.
+/*class TimingsListener implements TaskExecutionListener, BuildListener {
+    private long startTime
+    private timings = []
+
+    @Override
+    void beforeExecute(Task task) {
+        startTime = System.nanoTime()
+    }
+
+    @Override
+    void afterExecute(Task task, TaskState taskState) {
+    def ms = TimeUnit.MILLISECONDS.convert(System.nanoTime() - startTime, TimeUnit.NANOSECONDS);
+    Date currentTime = new Date();
+    SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    String dateString = formatter.format(currentTime);
+    timings.add([ms, dateString, task.path])
+    //task.project.logger.warn "${task.path} took ${ms}ms"
+}
+
+    @Override
+    void buildFinished(BuildResult result) {
+        println "Task timings:"
+        for (timing in timings) {
+            if (timing[0] >= 50) {
+                printf "%7sms  %s  %s\n", timing
+            }
+        }
+    }
+
+    @Override
+    void buildStarted(Gradle gradle) {}
+
+    @Override
+    void projectsEvaluated(Gradle gradle) {}
+
+    @Override
+    void projectsLoaded(Gradle gradle) {}
+
+    @Override
+    void settingsEvaluated(Settings settings) {}
+}
+
+gradle.addListener new TimingsListener()
+*/

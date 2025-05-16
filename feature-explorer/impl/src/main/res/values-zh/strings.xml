@@ -44,8 +44,8 @@
     <string name="dialog_title_notification_permission">通知</string>
     <string name="dialog_message_delete">确定要删除该文件吗？</string>
     <string name="dialog_message_multi_delete">确定要删除选定的文件吗？</string>
-    <string name="dialog_message_storage_permission">作为文件管理器，Squircle CE 需要访问所有文件才能正常运行。\n\n请点击“继续”后在授予所有文件的管理权限。</string>
-    <string name="dialog_message_notification_permission">Squircle CE 需要通知权限以保证后台运行\n\n请在下一个系统设置界面中选择允许通知</string>
+    <string name="dialog_message_storage_permission">作为文件管理器，MathIDE 需要访问所有文件才能正常运行。\n\n请点击“继续”后在授予所有文件的管理权限。</string>
+    <string name="dialog_message_notification_permission">MathIDE 需要通知权限以保证后台运行\n\n请在下一个系统设置界面中选择允许通知</string>
     <string name="properties_name">文件名:</string>
     <string name="properties_path">文件路径:</string>
     <string name="properties_modified">最后修改:</string>

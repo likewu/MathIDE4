@@ -17,7 +17,7 @@
 
 <resources>
 
-    <string name="app_name" translatable="false">Squircle CE</string>
+    <string name="app_name" translatable="false">MathIDE</string>
 
     <string name="action_install">Install</string>
     <string name="action_later">Later</string>

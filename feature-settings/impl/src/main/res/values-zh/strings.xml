@@ -39,7 +39,7 @@
     <string name="pref_header_cloud_title">云 &amp; 服务器</string>
     <string name="pref_header_cloud_summary">配置云存储和服务器。</string>
     <string name="pref_header_about_title">关于</string>
-    <string name="pref_header_about_summary">查看 Squircle CE 的有关信息。</string>
+    <string name="pref_header_about_summary">查看 MathIDE 的有关信息。</string>
     <string name="pref_category_look_and_feel">外观</string>
     <string name="pref_category_other">其他</string>
     <string name="pref_category_font">字体</string>
@@ -108,7 +108,7 @@
     <string name="pref_folders_on_top_title">文件夹置顶</string>
     <string name="pref_folders_on_top_summary">文件夹将优先显示在文件的前面。</string>
     <string name="pref_sort_mode_title">排序方式</string>
-    <string name="pref_about_summary">Squircle CE 是依据 Apache 2.0 许可协议发布的开源项目\n\n当前版本: %1$s (%2$d)</string>
+    <string name="pref_about_summary">MathIDE 是依据 Apache 2.0 许可协议发布的开源项目\n\n当前版本: %1$s (%2$d)</string>
     <string name="pref_privacy_policy_title">查看“隐私政策”</string>
     <string name="pref_translation_title">Translation Platform</string>
     <string name="pref_translation_summary">Translate this app to your language</string>

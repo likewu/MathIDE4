@@ -145,6 +145,7 @@ private fun KeybindingScreen(
             Shortcut.FIND -> stringResource(R.string.shortcut_find)
             Shortcut.REPLACE -> stringResource(R.string.shortcut_replace)
             Shortcut.GOTO_LINE -> stringResource(R.string.shortcut_goto_line)
+            Shortcut.CODERUN -> stringResource(R.string.shortcut_coderun)
             Shortcut.FORCE_SYNTAX -> stringResource(R.string.shortcut_force_syntax)
             Shortcut.INSERT_COLOR -> stringResource(R.string.shortcut_insert_color)
         },

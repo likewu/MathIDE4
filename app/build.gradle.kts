@@ -25,10 +25,10 @@ plugins {
 }
 
 android {
-    namespace = "com.blacksquircle.ui"
+    namespace = "cn.leafcolor.mathide"
 
     defaultConfig {
-        applicationId = "com.blacksquircle.ui"
+        applicationId = "cn.leafcolor.mathide"
         versionCode = 10027
         versionName = "2025.1.2"
     }
@@ -61,7 +61,7 @@ dependencies {
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.profileinstaller)
 
-    gmsImplementation(libs.google.appupdate)
+    //gmsImplementation(libs.google.appupdate)
     implementation(libs.google.dagger)
     implementation(libs.jakewharton.timber)
     implementation(libs.kotlinx.coroutines.android)

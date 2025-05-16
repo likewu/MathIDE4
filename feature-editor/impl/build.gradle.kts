@@ -74,6 +74,9 @@ dependencies {
     implementation(project(":filesystems:filesystem-local"))
     implementation(project(":filesystems:filesystem-saf"))
 
+    implementation("com.afollestad.material-dialogs:core:3.3.0")
+    implementation("com.afollestad.material-dialogs:color:3.3.0")
+
     testImplementation(libs.test.junit)
     testImplementation(libs.test.mockk)
     androidTestImplementation(libs.test.junit.ext)

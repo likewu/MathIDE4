@@ -45,6 +45,7 @@
     <string name="shortcut_replace">Replace</string>
     <string name="shortcut_goto_line">Go to Line</string>
 
+    <string name="shortcut_coderun">Run Code</string>
     <string name="shortcut_force_syntax">Force Syntax</string>
     <string name="shortcut_insert_color">Insert Color</string>
 

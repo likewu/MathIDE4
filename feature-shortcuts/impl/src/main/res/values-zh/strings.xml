@@ -38,6 +38,7 @@
     <string name="shortcut_find">查找</string>
     <string name="shortcut_replace">替换</string>
     <string name="shortcut_goto_line">转到行</string>
+    <string name="shortcut_coderun">运行</string>
     <string name="shortcut_force_syntax">强制语法</string>
     <string name="shortcut_insert_color">插入颜色</string>
     <string name="shortcut_conflict">该快捷键已被其他操作绑定，是否继续将绑定改为此操作？</string>

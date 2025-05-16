@@ -23,7 +23,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.window.DialogProperties
 import androidx.navigation.NavController
-import com.blacksquircle.ui.R
+import cn.leafcolor.mathide.R
 import com.blacksquircle.ui.core.effect.sendNavigationResult
 import com.blacksquircle.ui.ds.PreviewBackground
 import com.blacksquircle.ui.ds.SquircleTheme

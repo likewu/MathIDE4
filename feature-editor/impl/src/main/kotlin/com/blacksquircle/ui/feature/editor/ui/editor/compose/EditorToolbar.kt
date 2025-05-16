@@ -55,6 +55,7 @@ internal fun EditorToolbar(
     onSelectLineClicked: () -> Unit = {},
     onDeleteLineClicked: () -> Unit = {},
     onDuplicateLineClicked: () -> Unit = {},
+    onCodeRunClicked: () -> Unit = {},
     onForceSyntaxClicked: () -> Unit = {},
     onInsertColorClicked: () -> Unit = {},
     onGitClicked: () -> Unit = {},
@@ -72,6 +73,13 @@ internal fun EditorToolbar(
         navigationIcon = UiR.drawable.ic_menu,
         onNavigationClicked = onDrawerClicked,
         navigationActions = {
+            IconButton(
+                iconResId = UiR.drawable.ic_play,
+                onClick = onCodeRunClicked,
+                enabled = true,
+                debounce = false,
+                contentDescription = stringResource(R.string.action_coderun)
+            )
             IconButton(
                 iconResId = UiR.drawable.ic_folder,
                 onClick = { menuType = MenuType.FILE },
@@ -145,6 +153,7 @@ internal fun EditorToolbar(
                     ToolsMenu(
                         expanded = menuType == MenuType.TOOLS,
                         onDismiss = { menuType = null },
+                        onCodeRunClicked = { menuType = null; onCodeRunClicked() },
                         onForceSyntaxClicked = { menuType = null; onForceSyntaxClicked() },
                         onInsertColorClicked = { menuType = null; onInsertColorClicked() },
                     )

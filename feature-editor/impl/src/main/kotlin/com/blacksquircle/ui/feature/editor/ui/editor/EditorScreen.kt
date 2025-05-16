@@ -75,6 +75,18 @@ import com.blacksquircle.ui.feature.git.api.navigation.CheckoutDialog.Companion.
 import com.blacksquircle.ui.feature.git.api.navigation.PullDialog.Companion.KEY_PULL
 import kotlinx.coroutines.launch
 import com.blacksquircle.ui.ds.R as UiR
+import android.content.Context
+import android.app.usage.UsageStats
+import android.app.usage.UsageStatsManager
+import android.content.ComponentName
+import android.content.Intent
+import androidx.core.app.TaskStackBuilder
+import java.io.File
+import java.util.concurrent.Executors
+import java.util.concurrent.TimeUnit
+import com.afollestad.materialdialogs.MaterialDialog
+import android.os.Bundle
+import android.os.Environment
 
 internal const val KEY_CLOSE_FILE = "KEY_CLOSE_FILE"
 internal const val KEY_SELECT_LANGUAGE = "KEY_SELECT_LANGUAGE"
@@ -127,6 +139,7 @@ internal fun EditorScreen(
         onSelectLineClicked = viewModel::onSelectLineClicked,
         onDeleteLineClicked = viewModel::onDeleteLineClicked,
         onDuplicateLineClicked = viewModel::onDuplicateLineClicked,
+        onCodeRunClicked = viewModel::onCodeRunClicked,
         onForceSyntaxClicked = viewModel::onForceSyntaxClicked,
         onInsertColorClicked = viewModel::onInsertColorClicked,
         onToggleFindClicked = viewModel::onToggleFindClicked,
@@ -174,6 +187,8 @@ internal fun EditorScreen(
         }
     }
 
+    val mathlandDir = File(Environment.getExternalStorageDirectory(), "MathLand")
+
     val activity = LocalActivity.current
     val context = LocalContext.current
     LaunchedEffect(Unit) {
@@ -198,6 +213,48 @@ internal fun EditorScreen(
                 is EditorViewEvent.Command -> {
                     scope.launch {
                         editorController.send(event.command)
+                    }
+                }
+                is EditorViewEvent.CodeRunContract -> {
+                    MaterialDialog(context).show {
+                        title(R.string.dialog_title_result)
+                        message(R.string.message_runing)
+
+                        val resultIntent = Intent();
+                        resultIntent.setClassName("cn.leafcolor.mathland", "cn.leafcolor.mathland.MainActivity");
+                        val cmpName: ComponentName = resultIntent.resolveActivity(context.getPackageManager())
+                        var flag = false
+                        val usm: UsageStatsManager = context.getSystemService(Context.USAGE_STATS_SERVICE) as UsageStatsManager;
+                        val now = System.currentTimeMillis()
+                        val stats: List<UsageStats> = usm.queryUsageStats(UsageStatsManager.INTERVAL_BEST, now - 600 * 1000, now)
+                        for (stat in stats) {
+                            if (stat.getPackageName()!!.equals(cmpName)) {
+                                flag = true;
+                                break;
+                            }
+                        }
+                        val bundle = Bundle()
+                        bundle.putString("CODE_LANGUAGE", event.language)
+                        bundle.putString("CODE_FILE_PATH", event.path.replace(mathlandDir.absolutePath, ""))
+                        resultIntent.putExtras(bundle)
+                        if (flag) {
+                            resultIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            context.startActivity(resultIntent);
+                        } else {
+                            resultIntent.getComponent()?.let {
+                                TaskStackBuilder.create(context)
+                                    .addParentStack(it)
+                                    .addNextIntent(resultIntent)
+                                    .startActivities()
+                            };
+                        }
+
+                        val scheduledExecutor = Executors.newSingleThreadScheduledExecutor()
+                        scheduledExecutor.schedule(Runnable {
+                            dismiss()
+                        }, 10000, TimeUnit.MILLISECONDS)
+                        
+                        positiveButton(R.string.action_ok)
                     }
                 }
             }
@@ -274,6 +331,7 @@ private fun EditorScreen(
     onSelectLineClicked: () -> Unit = {},
     onDeleteLineClicked: () -> Unit = {},
     onDuplicateLineClicked: () -> Unit = {},
+    onCodeRunClicked: () -> Unit = {},
     onForceSyntaxClicked: () -> Unit = {},
     onInsertColorClicked: () -> Unit = {},
     onToggleFindClicked: () -> Unit = {},
@@ -319,6 +377,7 @@ private fun EditorScreen(
                 onSelectLineClicked = onSelectLineClicked,
                 onDeleteLineClicked = onDeleteLineClicked,
                 onDuplicateLineClicked = onDuplicateLineClicked,
+                onCodeRunClicked = onCodeRunClicked,
                 onForceSyntaxClicked = onForceSyntaxClicked,
                 onInsertColorClicked = onInsertColorClicked,
                 onFindClicked = onToggleFindClicked,

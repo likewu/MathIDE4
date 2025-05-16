@@ -30,6 +30,7 @@ internal fun ToolsMenu(
     expanded: Boolean,
     onDismiss: () -> Unit,
     modifier: Modifier = Modifier,
+    onCodeRunClicked: () -> Unit = {},
     onForceSyntaxClicked: () -> Unit = {},
     onInsertColorClicked: () -> Unit = {},
 ) {
@@ -39,6 +40,11 @@ internal fun ToolsMenu(
         verticalOffset = (-56).dp,
         modifier = modifier,
     ) {
+        PopupMenuItem(
+            title = stringResource(R.string.action_coderun),
+            iconResId = UiR.drawable.ic_play,
+            onClick = onCodeRunClicked,
+        )
         PopupMenuItem(
             title = stringResource(R.string.action_force_syntax),
             iconResId = UiR.drawable.ic_marker,

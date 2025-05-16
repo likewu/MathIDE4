@@ -42,6 +42,7 @@ enum class Shortcut(val key: String, val group: KeyGroup, val defaultValue: Stri
     FIND("shortcut_find", KeyGroup.EDITOR, "100F"), // Ctrl + F
     REPLACE("shortcut_replace", KeyGroup.EDITOR, "100R"), // Ctrl + R
     GOTO_LINE("shortcut_goto_line", KeyGroup.EDITOR, "100G"), // Ctrl + G
+    CODERUN("shortcut_coderun", KeyGroup.EDITOR, "100B"), // Ctrl + B
     FORCE_SYNTAX("shortcut_force_syntax", KeyGroup.TOOLS, "000\u0000"), // None set
     INSERT_COLOR("shortcut_insert_color", KeyGroup.TOOLS, "000\u0000"); // None set
 

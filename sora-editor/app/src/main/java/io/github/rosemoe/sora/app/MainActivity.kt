@@ -145,6 +145,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var searchMenu: PopupMenu
     private var searchOptions = SearchOptions(false, false)
+    private var coderun: MenuItem? = null
     private var undo: MenuItem? = null
     private var redo: MenuItem? = null
 
@@ -538,6 +539,7 @@ class MainActivity : AppCompatActivity() {
      * Update buttons state for undo/redo
      */
     private fun updateBtnState() {
+        coderun?.isEnabled = true
         undo?.isEnabled = binding.editor.canUndo()
         redo?.isEnabled = binding.editor.canRedo()
     }
@@ -598,6 +600,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
+        coderun = menu.findItem(R.id.text_coderun)
         undo = menu.findItem(R.id.text_undo)
         redo = menu.findItem(R.id.text_redo)
         return super.onCreateOptionsMenu(menu)

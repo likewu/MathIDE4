@@ -35,11 +35,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/SplashTheme"
-        android:name=".SquircleApp"
-        android:requestLegacyExternalStorage="true">
+        android:name="cn.leafcolor.mathide.SquircleApp"
+        android:requestLegacyExternalStorage="true"
+        tools:replace="android:theme">
 
         <activity
-            android:name=".application.MainActivity"
+            android:name="com.blacksquircle.ui.application.MainActivity"
             android:windowSoftInputMode="adjustResize"
             android:configChanges="keyboard|keyboardHidden"
             android:launchMode="singleTask"
@@ -55,6 +56,8 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
 
+                <data android:host="*" />
+                <data android:mimeType="*/*" />
                 <data android:scheme="file" />
                 <data android:scheme="content" />
 
@@ -95,6 +98,10 @@
 
     </application>
 
+    <uses-permission
+        android:name="android.permission.PACKAGE_USAGE_STATS"
+        tools:ignore="ProtectedPermissions" />
+
     <queries>
 
         <!-- Open unsupported file types (images, videos) -->
@@ -103,6 +110,8 @@
 
             <data android:mimeType="*/*" />
         </intent>
+        <package android:name="tech.ula" />
+        <package android:name="cn.leafcolor.mathland" />
     </queries>
 
 </manifest>

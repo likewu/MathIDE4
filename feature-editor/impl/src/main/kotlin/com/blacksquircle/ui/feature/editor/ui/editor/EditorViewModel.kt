@@ -74,6 +74,8 @@ import timber.log.Timber
 import javax.inject.Inject
 import javax.inject.Provider
 import com.blacksquircle.ui.ds.R as UiR
+import android.os.Environment
+import cn.leafcolor.langparser.Parser
 
 internal class EditorViewModel @Inject constructor(
     private val stringProvider: StringProvider,
@@ -291,6 +293,7 @@ internal class EditorViewModel @Inject constructor(
             Shortcut.FIND -> onToggleFindClicked()
             Shortcut.REPLACE -> onToggleReplaceClicked()
             Shortcut.GOTO_LINE -> onGoToLineClicked()
+            Shortcut.CODERUN -> onCodeRunClicked()
             Shortcut.FORCE_SYNTAX -> onForceSyntaxClicked()
             Shortcut.INSERT_COLOR -> onInsertColorClicked()
             else -> Unit
@@ -417,6 +420,23 @@ internal class EditorViewModel @Inject constructor(
                 canUndo = content.canUndo(),
                 canRedo = content.canRedo(),
             )
+        }
+    }
+
+    fun onCodeRunClicked() {
+        viewModelScope.launch {
+            try {
+                if (selectedPosition > -1) {
+                    val document = documents[selectedPosition].document
+                    val parser = Parser.getInstance()
+                    val parseResult = parser.execute(document.language, document.name, "", document.path, Environment.getExternalStorageDirectory())
+                    if(parseResult.exception!=null) throw Exception(parseResult.exception.message)
+                    _viewEvent.send(EditorViewEvent.CodeRunContract(document.language, document.path))
+                }
+            } catch (e: Exception) {
+                Timber.e(e, e.message)
+                _viewEvent.send(ViewEvent.Toast(e.message.orEmpty()))
+            }
         }
     }
 

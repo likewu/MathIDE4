@@ -24,6 +24,12 @@
 
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_code_run"
+        android:title="@string/action_code_run"
+        android:icon="@drawable/ic_play"
+        app:iconTint="?colorOnSurfaceVariant"
+        app:showAsAction="always" />
     <item android:title="@string/cursor_actions">
         <menu>
             <item
